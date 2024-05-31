@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="welcome-section">
+    <div class="welcome-photo">
+        <img src="{{ asset('images/welcome.jpg') }}" alt="Welcome Photo">
+        <div class="welcome-message">
+            <h1>Welcome to Pratibha Parlor</h1>
+            <p>Experience the best services and ambiance.</p>
+        </div>
+    </div>
+</div>
 <div class="container fade-in">
     <div class="slider">
         <div class="slides">
@@ -20,6 +29,7 @@
     </div>
 </div>
 @endsection
+
 
 
 <script>

@@ -4,10 +4,13 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
-    background-color: #333;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background for the header */
     color: #fff;
     padding: 10px 0;
     position: sticky;
@@ -16,50 +19,64 @@ header {
     z-index: 1000;
 }
 
-header nav {
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
 }
 
-header .logo img {
+.navbar .logo img {
     height: 50px;
-    width: auto;
+    width: 50px;
+    border-radius: 50%; /* Making the logo circular */
 }
 
-header ul {
+.navbar ul {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
 
-header ul li {
+.navbar ul li {
     margin: 0 10px;
+    position: relative;
 }
 
-header ul li a {
+.navbar ul li a {
     color: #fff;
-    text-decoration: none;
+    text-decoration: none; /* Removed underline */
+    padding: 10px 15px;
     position: relative;
     overflow: hidden;
+    display: block;
+    transition: color 0.3s ease;
 }
 
-header ul li a::after {
+.navbar ul li a:hover {
+    color: #ff7e5f; /* Change text color on hover */
+}
+
+.navbar ul li a::before {
     content: '';
     position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 100%;
-    background: #fff;
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
 }
 
-header ul li a:hover::after {
-    transform: translateX(0);
+.navbar ul li a:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+main {
+    flex: 1; /* Ensures that main content expands to fill available space */
 }
 
 .footer-content {
@@ -67,8 +84,6 @@ header ul li a:hover::after {
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
 
@@ -76,6 +91,48 @@ header ul li a:hover::after {
     padding: 20px;
 }
 
+/* New styles for the welcome section */
+.welcome-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+.welcome-section .welcome-photo {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.welcome-section .welcome-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.welcome-section .welcome-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.welcome-section .welcome-message h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.welcome-section .welcome-message p {
+    font-size: 1.5em;
+}
+
+/* Existing slider styles */
 .slider {
     position: relative;
     width: 100%;
