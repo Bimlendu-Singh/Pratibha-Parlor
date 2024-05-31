@@ -75,6 +75,42 @@ header {
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* Updated CSS for the transparent overlay */
+/* Updated CSS for the transparent overlay */
+.navbar {
+    position: relative; /* Ensure positioning for the overlay */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    pointer-events: none; /* Allow clicks to pass through the overlay to underlying elements */
+    z-index: 99; /* Ensure the overlay is above other navbar elements */
+}
+
+.overlay::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.overlay:hover::before {
+    transform: translate(-50%, -50%) scale(1); /* Expand the circle on hover */
+}
+
+
+
 main {
     flex: 1; /* Ensures that main content expands to fill available space */
 }
